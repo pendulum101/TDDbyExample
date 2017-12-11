@@ -1,15 +1,15 @@
 package main.java;
 
 public class Sum implements Expression {
-    Money augend;
-    Money addend;
+    private Expression augend;
+    private Expression addend;
 
-    public Sum(Money augend, Money addend) {
+    public Sum(Expression augend, Expression addend) {
         this.augend = augend;
         this.addend = addend;
     }
 
-    public Money getAugend() {
+    public Expression getAugend() {
         return augend;
     }
 
@@ -17,7 +17,7 @@ public class Sum implements Expression {
         this.augend = augend;
     }
 
-    public Money getAddend() {
+    public Expression getAddend() {
         return addend;
     }
 
@@ -26,7 +26,14 @@ public class Sum implements Expression {
     }
 
     public Money reduce(Bank bank, String to) {
-        int amount  = augend.amount + addend.amount;
+        int amount  = augend.reduce(bank, to).amount + addend.reduce(bank, to ).amount;
         return new Money(amount, to);
     }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return null;
+    }
+
+
 }

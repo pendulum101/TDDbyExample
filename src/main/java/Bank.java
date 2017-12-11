@@ -22,5 +22,4 @@ public class Bank {
         rates.put(new Pair(from, to), new Integer(rate));
     }
 
-
 }
